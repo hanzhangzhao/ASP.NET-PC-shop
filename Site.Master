@@ -1,0 +1,78 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.Master.cs" Inherits="part4.SiteMaster" %>
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head runat="server">
+    <title></title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <script src="Scripts/jquery-3.3.1.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form runat="server">
+        
+        <div class="top-bar">
+            <div class="com-width">
+                <div class="left-area">
+                    <%--<a href="#" class="collection">stuff login</a>--%>
+                </div>
+                <div class="right-area" id="wel">
+                    <asp:Label ID="LoginLabel" Text ="Welcome to our site" runat="server"></asp:Label>
+                    <asp:HyperLink ID="LoginLink" NavigateUrl="Login.aspx" Text="Login" runat="server" Style="text-decoration: underline;" />&nbsp
+                    <asp:HyperLink ID="SignupLink" NavigateUrl="Signup.aspx" Text="Sign Up" runat="server" Style="text-decoration: underline;" />
+                    <asp:LinkButton ID="SignoutLink" NavigateUrl="~/Default.aspx" Text="Sign Out" runat="server" OnClick="Logout_Click" Style="text-decoration: underline;"/>
+                </div>
+            </div>
+        </div>
+        <div class="logo-bar">
+            <div class="com-width">
+                <div class="logo fl">
+                    <a href="Default.aspx">
+                        <p class="logo">Zhao's PC Shop</p>
+                    </a>
+                </div>
+                <%--<div class="search-box fl">
+                    <input type="text" class="search-text fl">
+                    <input type="button" value="Search" class="search-btn fr">
+                </div>--%>
+                <div class="shop-cart fr">
+
+                    <asp:Button ID="CartButton" runat="server" Text="My Cart" PostBackUrl="Cart.aspx" CssClass="shop-text fl" />
+                </div>
+            </div>
+        </div>
+        <div class="page">
+            <div class="header">
+                <div class="nav-box">
+                    <div class="com-width">
+
+                        <asp:Menu ID="NavigationMenu" runat="server" CssClass="nav fl" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
+                            <Items>
+                                <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Home" />
+                                <asp:MenuItem NavigateUrl="~/PreBuiltComp.aspx" Text="Pre-Built" Value="Pre-Built Computers"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/Contact.aspx" Text="Contact Us" Value="Contacts" />
+                                <asp:MenuItem NavigateUrl="~/Feedback.aspx" Text="Feedback" Value="Feedback"></asp:MenuItem>
+                            </Items>
+                        </asp:Menu>
+                        <br />
+                    </div>
+                </div>
+            </div>
+            <div class="main">
+                <div class="subtotal">
+                    <asp:Label ID="CostOfCurrentConfigurationLabel" runat="server" Text="Subtotal:"></asp:Label>
+                    <asp:Label ID="TotalCostLabel" runat="server"></asp:Label>
+                </div>
+                <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="footer">
+        </div>
+    </form>
+</body>
+</html>
